@@ -1,0 +1,40 @@
+version: '3'
+services:
+  nginx:
+    image: nginxproxy/nginx-proxy
+    container_name: nginx-proxy
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./data/conf:/etc/nginx/conf.d
+      - ./data/vhost:/etc/nginx/vhost.d
+      - ./data/html:/usr/share/nginx/html
+      - ./data/dhparam:/etc/nginx/dhparam
+      - ./data/certs:/etc/nginx/certs:ro
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+    networks:
+      - domains
+    restart: always
+    environment:
+      HSTS: "off"
+
+  local-certs:
+    container_name: proxy-companion
+    restart: always
+    image: sebastienheyd/self-signed-proxy-companion
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - ./data/certs:/etc/nginx/certs:rw
+
+volumes:
+  conf:
+  vhost:
+  html:
+  dhparam:
+  certs:
+  acme:
+
+networks:
+  domains:
+    external: true
