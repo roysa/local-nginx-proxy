@@ -26,6 +26,8 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - ./data/certs:/etc/nginx/certs:rw
+    environment:
+      EXPIRATION: 396
 
 volumes:
   conf:
