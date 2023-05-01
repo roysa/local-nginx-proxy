@@ -12,7 +12,7 @@ services:
       - ./data/html:/usr/share/nginx/html
       - ./data/dhparam:/etc/nginx/dhparam
       - ./data/certs:/etc/nginx/certs:ro
-      - /var/run/docker.sock:/tmp/docker.sock:ro
+      - $DOCKER_HOST_PATH:/tmp/docker.sock:ro
     networks:
       - domains
     restart: always
@@ -24,7 +24,7 @@ services:
     restart: always
     image: sebastienheyd/self-signed-proxy-companion
     volumes:
-      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - $DOCKER_HOST_PATH:/var/run/docker.sock:ro
       - ./data/certs:/etc/nginx/certs:rw
     environment:
       EXPIRATION: 396

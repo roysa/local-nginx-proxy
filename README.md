@@ -4,9 +4,26 @@ Automated nginx proxy with self-signed SSL certificates for local development
 
 - Clone the repository `git clone git@github.com:roysa/local-nginx-proxy.git nginx-proxy`
 
+- `cp .env.example .env`
+
 - Create a network `docker network create domains`
 
 - Run containers `docker compose up -d`
+
+## Ubuntu Docker Rootless 
+
+There are specific steps to allow containers run at rootless docker.
+
+- Allow to expose privileged ports https://docs.docker.com/engine/security/rootless/#exposing-privileged-ports and reboot the system
+
+- Clone the repository `git clone git@github.com:roysa/local-nginx-proxy.git nginx-proxy`
+
+- `cp .env.rootless.example .env`
+
+- Create a network `docker network create domains`
+
+- Run containers `docker compose up -d`
+
 
 ## CA installation for Ubuntu
 
