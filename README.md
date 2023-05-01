@@ -1,3 +1,5 @@
+Automated nginx proxy with self-signed SSL certificates for local development 
+
 ## Installation
 
 - Clone the repository `git clone git@github.com:roysa/local-nginx-proxy.git nginx-proxy`
