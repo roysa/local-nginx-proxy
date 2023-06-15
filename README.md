@@ -35,3 +35,9 @@ There are specific steps to allow containers run at rootless docker.
 ## CA installation for macOS
 
 - Import the data/certs/ca.crt file using instructions at https://support.apple.com/guide/keychain-access/add-certificates-to-a-keychain-kyca2431/mac
+
+## Update expired certificates
+
+1. regenerate all certificates including CA: `docker compose stop && rm -rf data/certs/* && docker compose up -d && wait 10 && docker compose restart`
+
+2. install new CA
