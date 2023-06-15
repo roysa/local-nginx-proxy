@@ -38,9 +38,11 @@ Import the data/certs/ca.crt file using instructions at https://support.apple.co
 
 - In the Keychain Access app  on your Mac, select either the login or System keychain.
 
-- Drag the certificate file onto the Keychain Access app.
+- Drag the ca.key certificate file onto the Keychain Access app.
 
 - If you’re asked to provide a name and password, type the name and password for an administrator user on this computer.
+
+- If "This root certificate is not trusted" message is displayed, open imported certificate details and set "Always Trust" in "Trust" section
 
 ## Update expired certificates
 
