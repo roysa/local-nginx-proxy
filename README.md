@@ -49,3 +49,20 @@ Import the data/certs/ca.crt file using instructions at https://support.apple.co
 1. regenerate all certificates including CA: `docker compose stop && rm -rf data/certs/* && docker compose up -d && wait 10 && docker compose restart`
 
 2. install new CA
+
+## Additional scripts
+
+### Add a virtual host containing the CA certificate
+
+- `bash scripts/setup-ca-host.sh`
+
+The script will create a virtual host with the CA certificate for remote access.
+The CA file URL is `http://nginx-proxy.local/ca.crt`. 
+
+Please don't forget to add the "nginx-proxy.local" domain to the `/etc/hosts` file.
+
+Config files created and are editable:
+- `data/conf.d/local-ca.conf`
+- `data/html/index.html`
+
+The CA certificate file is copied to the `data/html` folder.
