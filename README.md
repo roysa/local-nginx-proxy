@@ -66,3 +66,14 @@ Config files created and are editable:
 - `data/html/index.html`
 
 The CA certificate file is copied to the `data/html` folder.
+
+
+## Troubleshooting
+
+#### Error 413 Entity Too Large
+
+Use the client_max_body_size setting. Place a new file in the data/conf/, lime data/conf/limits.conf
+
+`client_max_body_size 128M;`
+
+Validate by `docker exec nginx-proxy nginx -T | grep client_max_body_size`
